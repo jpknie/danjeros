@@ -31,4 +31,15 @@ typedef struct global_descriptor_t {
     uint8_t base_addr_high;
 }global_descriptor_t;
 
+typedef struct global_descriptor_table_ptr_t {
+	uint16_t limit;		/** Upper 16 bits of all selector limits */
+	uint32_t base;		/** The address of the first global_descriptor_t entry */
+} global_descriptor_table_ptr_t;
+
+/** Load global descriptor table register */
+/*
+static inline void lgdt( void *base, unsigned int size ) {
+}
+*/
+
 #endif
