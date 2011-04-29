@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include <arch/cpu.h>
+#include <arch/x86/control_registers.h>
 
 typedef uint64_t physical_addr_t;
 typedef uint16_t segment_selector_t;
@@ -57,6 +58,13 @@ static inline rflags_t rflags_read()
 static inline void cpu_pause()
 {
     __asm__ __volatile__ ("pause");
+}
+
+static inline void enable_paging() {
+    __asm__ volatile ( 
+   "mov %cr0, %eax \
+    bts $31, %eax \
+   mov %eax, %cr0 ");
 }
 
 #endif
