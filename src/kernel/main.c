@@ -8,6 +8,7 @@
 #include <kernel/scheduler.h>
 
 #include <arch/x86/pic.h>
+#include <arch/x86_64/global_descriptor_table.h>
 
 static void puts(const char *str)
 {
